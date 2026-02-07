@@ -9,7 +9,8 @@ Y="\e[33m"
 N="\e[0m"
 SCRIPT_DIR=$PWD
 mkdir -p $LOGS_FOLDER
-MONGODB_HOST="mongodb.jaswanthdevops.online"
+MONGODB_HOST=mongodb.jaswanthdevops.online
+MYSQL_HOST=mysql.jaswanthdevops.online
 
 check_root() {
 if [ $USERID -ne 0 ]; then
@@ -86,4 +87,13 @@ systemd_setup(){
 app_restart(){
     systemctl restart $appname
     validate $? "Restarting $appname"
+}
+
+java_setup(){
+
+    dnf install maven -y &>>$LOGS_FILE
+    validate $? "Maven Installation"
+    mvn clean package &>>$LOGS_FILE
+    mv target/$appname-1.0.jar $appname.jar &>>$LOGS_FILE
+    validate $? "Download the dependencies & build the application"
 }
