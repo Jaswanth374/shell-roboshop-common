@@ -82,3 +82,8 @@ systemed(){
     systemctl start $appname
     validate $? "Starting and enabling $appname"
 }
+
+app_restart(){
+    systemctl restart $appname
+    VALIDATE $? "Restarting $appname"
+}
