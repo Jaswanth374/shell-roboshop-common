@@ -7,6 +7,7 @@ check_root
 create_systemuser
 app_code_install
 nodejs
+systemd_setup
 
 cp $SCRIPT_DIR/mongo.repo /etc/yum.repos.d/mongo.repo &>>$LOGS_FILE
 validate $? "Copying the mongo.repo"

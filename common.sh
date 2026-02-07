@@ -72,7 +72,7 @@ app_code_install(){
     validate $? "Uzip $appname code"
 }
 
-systemed(){
+systemd_setup(){
 
     cp $SCRIPT_DIR/$appname.service /etc/systemd/system/$appname.service
     validate $? "Created systemctl service"
