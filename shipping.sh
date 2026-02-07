@@ -10,7 +10,7 @@ app_code_install
 java_setup
 systemd_setup
 
-dnf install mysql -y 
+dnf install mysql -y  &>>$LOGS_FILE
 validate $? "mysql client installed"
 
 mysql -h $MYSQL_HOST -uroot -pRoboShop@1 -e 'use cities'
