@@ -97,3 +97,11 @@ java_setup(){
     mv target/$appname-1.0.jar $appname.jar &>>$LOGS_FILE
     validate $? "Download the dependencies & build the application"
 }
+
+python_setup(){
+
+    dnf install python3 gcc python3-devel -y &>>$LOGS_FILE
+    validate $? "Installing Python"
+    pip3 install -r requirements.txt &>>$LOGS_FILE
+    validate $? "Installing dependencies"
+}
